@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure--bvodj6l*=7uh0976tf10)56*&1k_=xops8naphi-3=o94!dc1
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['pythonsolid.com', 'www.pythonsolid.com']
 
 
 # Application definition
