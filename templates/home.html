@@ -17,6 +17,239 @@
             color: #333;
             background: linear-gradient(135deg, #536878 0%, #3d4f5c 100%);
             min-height: 100vh;
+            transition: all 0.3s ease;
+            cursor: none;
+        }
+
+        /* Dark/Light Mode */
+        body.light-mode {
+            background: linear-gradient(135deg, #f8fbfc 0%, #ffffff 100%);
+            color: #333;
+        }
+
+        body.light-mode .hero h1,
+        body.light-mode .section-title {
+            color: #536878;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+        }
+
+        body.light-mode .hero p {
+            color: #666;
+        }
+
+        body.light-mode .about-content,
+        body.light-mode .app-card,
+        body.light-mode .contact-content {
+            background: rgba(83, 104, 120, 0.08);
+            color: #444;
+            border: 1px solid rgba(83, 104, 120, 0.15);
+        }
+
+        body.light-mode .app-card h3 {
+            color: #536878;
+        }
+
+        body.light-mode header {
+            background: rgba(255, 255, 255, 0.9);
+            border-bottom: 1px solid rgba(83, 104, 120, 0.1);
+        }
+
+        body.light-mode .nav-links a {
+            color: #536878;
+        }
+
+        body.light-mode .nav-links a:hover {
+            background: rgba(83, 104, 120, 0.1);
+        }
+
+        body.light-mode .contact-item i {
+            color: #536878;
+        }
+
+        body.light-mode .contact-item {
+            background: rgba(83, 104, 120, 0.1);
+        }
+
+        body.light-mode .contact-item:hover {
+            background: rgba(83, 104, 120, 0.15);
+        }
+
+        body.light-mode .theme-toggle {
+            background: rgba(83, 104, 120, 0.2);
+            color: #536878;
+        }
+
+        body.light-mode .theme-toggle:hover {
+            background: rgba(83, 104, 120, 0.3);
+        }
+
+        /* Loading Screen */
+        .loading-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #536878 0%, #3d4f5c 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            opacity: 1;
+            transition: opacity 0.5s ease;
+        }
+
+        .loading-screen.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .loading-content {
+            text-align: center;
+            color: white;
+        }
+
+        .loading-spinner {
+            border: 3px solid rgba(255, 255, 255, 0.3);
+            border-top: 3px solid #ffd700;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 20px;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Progress Bar */
+        .progress-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 0%;
+            height: 4px;
+            background: linear-gradient(90deg, #a8c8e1, #7fb3d3);
+            z-index: 9998;
+            transition: width 0.3s ease;
+        }
+
+        /* Theme Toggle */
+        .theme-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1001;
+            background: rgba(255, 255, 255, 0.2);
+            border: none;
+            color: white;
+            padding: 12px;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 1.2rem;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .theme-toggle:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: scale(1.1);
+        }
+
+        /* Particles */
+        .particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .particle {
+            position: absolute;
+            color: rgba(255, 255, 255, 0.3);
+            font-size: 12px;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { transform: translateY(-100px) rotate(360deg); opacity: 0; }
+        }
+
+        /* Cursor Trail */
+        .cursor-dot {
+            width: 8px;
+            height: 8px;
+            background: #a8c8e1;
+            border-radius: 50%;
+            position: fixed;
+            pointer-events: none;
+            z-index: 9999;
+            transition: transform 0.1s ease;
+            box-shadow: 0 0 10px rgba(168, 200, 225, 0.5);
+        }
+
+        /* Scroll Animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .slide-in-left {
+            opacity: 0;
+            transform: translateX(-50px);
+            transition: all 0.6s ease;
+        }
+
+        .slide-in-left.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .slide-in-right {
+            opacity: 0;
+            transform: translateX(50px);
+            transition: all 0.6s ease;
+        }
+
+        .slide-in-right.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        /* Typing Effect */
+        .typing-text {
+            display: inline-block;
+        }
+
+        .typing-cursor {
+            display: inline-block;
+            background: #a8c8e1;
+            width: 3px;
+            animation: blink 1s infinite;
+            margin-left: 2px;
+        }
+
+        @keyframes blink {
+            0%, 50% { opacity: 1; }
+            51%, 100% { opacity: 0; }
         }
 
         .container {
@@ -213,24 +446,51 @@
 
         /* Mobile Responsive */
         @media (max-width: 768px) {
+            .theme-toggle {
+                top: 15px;
+                right: 15px;
+                width: 45px;
+                height: 45px;
+                font-size: 1rem;
+            }
+
             .nav-links {
-                gap: 1rem;
+                gap: 0.5rem;
+                flex-wrap: wrap;
+            }
+
+            .nav-links a {
+                padding: 0.3rem 0.7rem;
+                font-size: 0.9rem;
+            }
+
+            .hero {
+                padding: 2rem 0;
+                margin-top: 1rem;
             }
 
             .hero h1 {
                 font-size: 2.5rem;
+                margin-bottom: 1rem;
             }
 
             .hero p {
                 font-size: 1rem;
+                padding: 0 1rem;
+            }
+
+            .section {
+                padding: 2rem 0;
             }
 
             .section-title {
                 font-size: 2rem;
+                margin-bottom: 2rem;
             }
 
             .apps-grid {
                 grid-template-columns: 1fr;
+                gap: 1.5rem;
             }
 
             .contact-info {
@@ -239,7 +499,68 @@
             }
 
             .logo {
-                font-size: 1.5rem;
+                font-size: 1.3rem;
+            }
+
+            .about-content,
+            .contact-content {
+                padding: 2rem 1.5rem;
+            }
+
+            .app-card {
+                padding: 1.5rem;
+            }
+
+            nav {
+                padding: 0 10px;
+            }
+
+            .container {
+                padding: 0 15px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .theme-toggle {
+                top: 10px;
+                right: 10px;
+                width: 40px;
+                height: 40px;
+                font-size: 0.9rem;
+            }
+
+            .nav-links {
+                gap: 0.3rem;
+            }
+
+            .nav-links a {
+                padding: 0.2rem 0.5rem;
+                font-size: 0.8rem;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 0.9rem;
+            }
+
+            .section-title {
+                font-size: 1.7rem;
+            }
+
+            .logo {
+                font-size: 1.1rem;
+            }
+
+            .about-content,
+            .contact-content {
+                padding: 1.5rem 1rem;
+            }
+
+            .app-card {
+                padding: 1.2rem;
             }
         }
 
@@ -250,6 +571,26 @@
     </style>
 </head>
 <body>
+    <!-- Loading Screen -->
+    <div class="loading-screen" id="loadingScreen">
+        <div class="loading-content">
+            <div class="loading-spinner"></div>
+            <h2>PythonSolid Yükleniyor...</h2>
+        </div>
+    </div>
+
+    <!-- Progress Bar -->
+    <div class="progress-bar" id="progressBar"></div>
+
+    <!-- Theme Toggle -->
+    <button class="theme-toggle" id="themeToggle">🌙</button>
+
+    <!-- Particles -->
+    <div class="particles" id="particles"></div>
+
+    <!-- Cursor Trail -->
+    <div class="cursor-dot" id="cursorDot"></div>
+    <div class="cursor-outline" id="cursorOutline"></div>
     <header>
         <nav class="container">
             <a href="#" class="logo">PythonSolid</a>
@@ -266,16 +607,16 @@
         <!-- Hero Section -->
         <section id="anasayfa" class="hero">
             <div class="container">
-                <h1>PythonSolid</h1>
-                <p>Python ile güçlü ve etkili uygulamalar geliştiren bir geliştiricinin dünyasına hoş geldiniz.</p>
+                <h1 class="typing-text" id="typingText"></h1>
+                <p class="fade-in">Python ile güçlü ve etkili uygulamalar geliştiren bir geliştiricinin dünyasına hoş geldiniz.</p>
             </div>
         </section>
 
         <!-- About Section -->
         <section id="hakkimda" class="section">
             <div class="container">
-                <h2 class="section-title">Hakkımda</h2>
-                <div class="about-content">
+                <h2 class="section-title fade-in">Hakkımda</h2>
+                <div class="about-content slide-in-left">
                     <p>
                         Merhaba! Ben kod yazmayı seven, Python dilinde uzmanlaşmış bir geliştiriciyim. 
                         Günlük hayatı kolaylaştıran pratik uygulamalar ve botlar geliştirmeyi seviyorum. 
@@ -291,39 +632,39 @@
         <!-- Applications Section -->
         <section id="uygulamalar" class="section">
             <div class="container">
-                <h2 class="section-title">Uygulamalar</h2>
+                <h2 class="section-title fade-in">Uygulamalar</h2>
                 <div class="apps-grid">
-                    <div class="app-card">
+                    <div class="app-card fade-in">
                         <div class="app-icon">🐦</div>
                         <h3>Twitter Botu</h3>
                         <p>Otomatik tweet atma, beğeni, retweet ve takip işlemlerini gerçekleştiren gelişmiş Twitter botu. Belirlenen zamanlarda içerik paylaşımı yapabilir.</p>
                     </div>
 
-                    <div class="app-card">
+                    <div class="app-card fade-in">
                         <div class="app-icon">💬</div>
                         <h3>WhatsApp Botu</h3>
                         <p>WhatsApp üzerinden otomatik mesaj gönderimi, grup yönetimi ve toplu mesaj özelliklerini içeren akıllı bot uygulaması.</p>
                     </div>
 
-                    <div class="app-card">
+                    <div class="app-card fade-in">
                         <div class="app-icon">📱</div>
                         <h3>Telegram Botu</h3>
                         <p>Telegram API kullanarak geliştirilmiş çok fonksiyonlu bot. Komut işleme, dosya paylaşımı ve interaktif özellikler içerir.</p>
                     </div>
 
-                    <div class="app-card">
+                    <div class="app-card fade-in">
                         <div class="app-icon">🛒</div>
                         <h3>Hepsiburada Fiyat Takip</h3>
                         <p>Hepsiburada üzerindeki ürünlerin fiyat değişimlerini takip eden ve belirlenen fiyata düştüğünde bildirim gönderen bot.</p>
                     </div>
 
-                    <div class="app-card">
+                    <div class="app-card fade-in">
                         <div class="app-icon">🏪</div>
                         <h3>Trendyol Fiyat Takip</h3>
                         <p>Trendyol platformundaki ürün fiyatlarını izleyen, indirim anında uyarı veren ve fiyat geçmişi tutan akıllı takip sistemi.</p>
                     </div>
 
-                    <div class="app-card">
+                    <div class="app-card fade-in">
                         <div class="app-icon">📊</div>
                         <h3>Genel Fiyat Takip</h3>
                         <p>Çoklu e-ticaret sitelerini destekleyen, kapsamlı fiyat analizi ve karşılaştırma özelliklerine sahip gelişmiş takip botu.</p>
@@ -335,8 +676,8 @@
         <!-- Contact Section -->
         <section id="iletisim" class="section">
             <div class="container">
-                <h2 class="section-title">İletişim</h2>
-                <div class="contact-content">
+                <h2 class="section-title fade-in">İletişim</h2>
+                <div class="contact-content slide-in-right">
                     <p>Projelerim hakkında bilgi almak, işbirliği yapmak veya özel bot geliştirme talepleriniz için benimle iletişime geçebilirsiniz.</p>
                     <div class="contact-info">
                         <div class="contact-item">
@@ -364,6 +705,111 @@
     </footer>
 
     <script>
+        // Loading Screen
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                document.getElementById('loadingScreen').classList.add('hidden');
+            }, 2000);
+        });
+
+        // Progress Bar
+        window.addEventListener('scroll', () => {
+            const scrollTop = document.documentElement.scrollTop;
+            const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrollPercent = (scrollTop / scrollHeight) * 100;
+            document.getElementById('progressBar').style.width = scrollPercent + '%';
+        });
+
+        // Theme Toggle
+        const themeToggle = document.getElementById('themeToggle');
+        themeToggle.addEventListener('click', () => {
+            document.body.classList.toggle('light-mode');
+            themeToggle.textContent = document.body.classList.contains('light-mode') ? '☀️' : '🌙';
+        });
+
+        // Typing Effect
+        const typingText = document.getElementById('typingText');
+        const text = 'PythonSolid';
+        let index = 0;
+
+        function typeText() {
+            if (index < text.length) {
+                typingText.textContent += text.charAt(index);
+                index++;
+                setTimeout(typeText, 200);
+            }
+        }
+
+        setTimeout(typeText, 2500); // Start after loading screen
+
+        // Particles
+        function createParticle() {
+            const particle = document.createElement('div');
+            particle.className = 'particle';
+            particle.textContent = ['<', '>', '{', '}', '(', ')', ';', 'def', 'if', 'for', 'import'][Math.floor(Math.random() * 11)];
+            particle.style.left = Math.random() * 100 + '%';
+            particle.style.animationDuration = (Math.random() * 3 + 3) + 's';
+            particle.style.fontSize = (Math.random() * 10 + 10) + 'px';
+            
+            document.getElementById('particles').appendChild(particle);
+            
+            setTimeout(() => {
+                particle.remove();
+            }, 6000);
+        }
+
+        setInterval(createParticle, 500);
+
+        // Cursor Trail
+        const cursorDot = document.getElementById('cursorDot');
+        const cursorOutline = document.getElementById('cursorOutline');
+
+        document.addEventListener('mousemove', (e) => {
+            cursorDot.style.left = e.clientX + 'px';
+            cursorDot.style.top = e.clientY + 'px';
+            
+            setTimeout(() => {
+                cursorOutline.style.left = e.clientX + 'px';
+                cursorOutline.style.top = e.clientY + 'px';
+            }, 50);
+        });
+
+        // Scroll Triggered Animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        // Observe all animated elements
+        document.querySelectorAll('.fade-in, .slide-in-left, .slide-in-right').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Staggered animation for app cards
+        const appCards = document.querySelectorAll('.app-card');
+        appCards.forEach((card, index) => {
+            setTimeout(() => {
+                const cardObserver = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            setTimeout(() => {
+                                entry.target.classList.add('visible');
+                            }, index * 200); // Stagger by 200ms
+                        }
+                    });
+                }, observerOptions);
+                cardObserver.observe(card);
+            }, 100);
+        });
+
         // Smooth scrolling for navigation links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
@@ -382,9 +828,9 @@
         window.addEventListener('scroll', () => {
             const header = document.querySelector('header');
             if (window.scrollY > 100) {
-                header.style.background = 'rgba(255, 255, 255, 0.15)';
+                header.style.background = 'rgba(83, 104, 120, 0.15)';
             } else {
-                header.style.background = 'rgba(255, 255, 255, 0.1)';
+                header.style.background = 'rgba(83, 104, 120, 0.1)';
             }
         });
     </script>
