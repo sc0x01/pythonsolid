@@ -3,8 +3,7 @@ from django.urls import path
 from django.shortcuts import reverse
 from django.contrib.sitemaps.views import sitemap
 from django.contrib.sitemaps import Sitemap
-
-from .views import home, about, projects, contact  # View fonksiyonlarını içe aktar
+from .views import home, about, projects, contact
 
 class StaticViewSitemap(Sitemap):
     priority = 0.8
