@@ -2,145 +2,391 @@
 <html lang="tr">
 <head>
     <meta charset="UTF-8">
-    <title>PythonSolid</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <!-- Fontlar -->
-    <link href="https://fonts.cdnfonts.com/css/orange-gummy" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
+    <title>PythonSolid</title>
     <style>
-        body {
+        * {
             margin: 0;
-            background-color: #36454F;
-            color: #ffffff;
-            font-family: 'Segoe UI', sans-serif;
+            padding: 0;
+            box-sizing: border-box;
         }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #536878 0%, #3d4f5c 100%);
+            min-height: 100vh;
+        }
+
         .container {
             max-width: 1200px;
-            margin: auto;
-            padding: 0 24px;
+            margin: 0 auto;
+            padding: 0 20px;
         }
-        .navbar {
-            background-color: #36454F;
-            padding: 16px 0;
-            border-bottom: 2px solid #ffffff33;
-            position: sticky;
+
+        /* Header & Navbar */
+        header {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            position: fixed;
             top: 0;
+            left: 0;
+            right: 0;
             z-index: 1000;
+            padding: 1rem 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
         }
-        .nav-inner {
+
+        nav {
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
+
         .logo {
-            font-size: 24px;
+            font-size: 2rem;
             font-weight: bold;
+            color: white;
+            text-decoration: none;
         }
+
         .nav-links {
             display: flex;
-            gap: 24px;
+            list-style: none;
+            gap: 2rem;
         }
+
         .nav-links a {
-            color: #ffffff;
+            color: white;
             text-decoration: none;
-            font-size: 16px;
-            text-transform: uppercase;
-            position: relative;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
         }
-        .nav-links a.active::after,
-        .nav-links a:hover::after {
-            content: "";
-            position: absolute;
-            width: 100%;
-            height: 2px;
-            bottom: -4px;
-            left: 0;
-            background-color: #38bdf8;
+
+        .nav-links a:hover {
+            background: rgba(255, 255, 255, 0.2);
         }
-        .menu-toggle {
-            display: none;
-            font-size: 24px;
-            cursor: pointer;
+
+        /* Main Content */
+        main {
+            margin-top: 80px;
+            padding: 2rem 0;
         }
+
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            padding: 4rem 0;
+            color: white;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Sections */
+        .section {
+            padding: 4rem 0;
+            margin: 2rem 0;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: white;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+        }
+
+        /* About Section */
+        .about-content {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 3rem;
+            border-radius: 15px;
+            color: white;
+            text-align: center;
+            font-size: 1.1rem;
+            line-height: 1.8;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        /* Applications Section */
+        .apps-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .app-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            color: white;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .app-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        .app-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #ffd700;
+        }
+
+        .app-card p {
+            font-size: 1rem;
+            opacity: 0.9;
+            line-height: 1.6;
+        }
+
+        .app-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        /* Contact Section */
+        .contact-content {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 3rem;
+            border-radius: 15px;
+            color: white;
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem 2rem;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            transition: background 0.3s ease;
+        }
+
+        .contact-item:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .contact-item i {
+            font-size: 1.5rem;
+            color: #ffd700;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 2rem 0;
+            color: white;
+            opacity: 0.8;
+        }
+
+        /* Mobile Responsive */
         @media (max-width: 768px) {
             .nav-links {
-                display: none;
+                gap: 1rem;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .apps-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-info {
                 flex-direction: column;
-                background-color: #36454F;
-                position: absolute;
-                top: 60px;
-                right: 24px;
-                width: 200px;
-                border: 1px solid #ccc;
-                padding: 10px;
+                gap: 1rem;
             }
-            .nav-links.show {
-                display: flex;
-            }
-            .menu-toggle {
-                display: block;
+
+            .logo {
+                font-size: 1.5rem;
             }
         }
-        .hero {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            height: 80vh;
-            text-align: center;
-            font-family: 'orange gummy', cursive;
-            font-size: 72px;
-            position: relative;
-        }
-        .hero-title {
-            text-shadow: 0 0 10px #00ffff, 0 0 20px #00ffff;
-        }
-        .loading {
-            font-size: 16px;
-            font-family: 'orange gummy', cursive;
-            margin-top: 12px;
-            opacity: 0.75;
-        }
-        .loading::after {
-            content: "";
-            animation: dots 1.5s steps(4, end) infinite;
-        }
-        @keyframes dots {
-            0% { content: ""; }
-            25% { content: "."; }
-            50% { content: ".."; }
-            75% { content: "..."; }
-            100% { content: ""; }
+
+        /* Smooth Scroll */
+        html {
+            scroll-behavior: smooth;
         }
     </style>
 </head>
 <body>
-    <div class="navbar">
-        <div class="container nav-inner">
-            <div class="logo">PythonSolid</div>
-            <div class="menu-toggle" onclick="toggleMenu()"><i class="fas fa-bars"></i></div>
-            <div class="nav-links" id="navLinks">
-                <a href="#" class="active">Anasayfa</a>
-                <a href="#">Portföy</a>
-                <a href="#">Uygulamalar</a>
-                <a href="#">Hakkımda</a>
-                <a href="#">İletişim</a>
-            </div>
-        </div>
-    </div>
+    <header>
+        <nav class="container">
+            <a href="#" class="logo">PythonSolid</a>
+            <ul class="nav-links">
+                <li><a href="#anasayfa">Anasayfa</a></li>
+                <li><a href="#hakkimda">Hakkımda</a></li>
+                <li><a href="#uygulamalar">Uygulamalar</a></li>
+                <li><a href="#iletisim">İletişim</a></li>
+            </ul>
+        </nav>
+    </header>
 
-    <div class="hero">
-        <div class="hero-title">sc0x01</div>
-        <div class="loading">loading</div>
-    </div>
+    <main>
+        <!-- Hero Section -->
+        <section id="anasayfa" class="hero">
+            <div class="container">
+                <h1>PythonSolid</h1>
+                <p>Python ile güçlü ve etkili uygulamalar geliştiren bir geliştiricinin dünyasına hoş geldiniz.</p>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="hakkimda" class="section">
+            <div class="container">
+                <h2 class="section-title">Hakkımda</h2>
+                <div class="about-content">
+                    <p>
+                        Merhaba! Ben kod yazmayı seven, Python dilinde uzmanlaşmış bir geliştiriciyim. 
+                        Günlük hayatı kolaylaştıran pratik uygulamalar ve botlar geliştirmeyi seviyorum. 
+                        Özellikle sosyal medya otomasyonu, e-ticaret fiyat takibi ve mesajlaşma uygulamaları 
+                        konularında deneyimliyim. Her projeyi bir öğrenme fırsatı olarak görüyor ve 
+                        sürekli kendimi geliştirmeye odaklanıyorum. Kodlama benim için sadece bir meslek değil, 
+                        aynı zamanda tutkum ve yaratıcılığımı ifade etme şeklim.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Applications Section -->
+        <section id="uygulamalar" class="section">
+            <div class="container">
+                <h2 class="section-title">Uygulamalar</h2>
+                <div class="apps-grid">
+                    <div class="app-card">
+                        <div class="app-icon">🐦</div>
+                        <h3>Twitter Botu</h3>
+                        <p>Otomatik tweet atma, beğeni, retweet ve takip işlemlerini gerçekleştiren gelişmiş Twitter botu. Belirlenen zamanlarda içerik paylaşımı yapabilir.</p>
+                    </div>
+
+                    <div class="app-card">
+                        <div class="app-icon">💬</div>
+                        <h3>WhatsApp Botu</h3>
+                        <p>WhatsApp üzerinden otomatik mesaj gönderimi, grup yönetimi ve toplu mesaj özelliklerini içeren akıllı bot uygulaması.</p>
+                    </div>
+
+                    <div class="app-card">
+                        <div class="app-icon">📱</div>
+                        <h3>Telegram Botu</h3>
+                        <p>Telegram API kullanarak geliştirilmiş çok fonksiyonlu bot. Komut işleme, dosya paylaşımı ve interaktif özellikler içerir.</p>
+                    </div>
+
+                    <div class="app-card">
+                        <div class="app-icon">🛒</div>
+                        <h3>Hepsiburada Fiyat Takip</h3>
+                        <p>Hepsiburada üzerindeki ürünlerin fiyat değişimlerini takip eden ve belirlenen fiyata düştüğünde bildirim gönderen bot.</p>
+                    </div>
+
+                    <div class="app-card">
+                        <div class="app-icon">🏪</div>
+                        <h3>Trendyol Fiyat Takip</h3>
+                        <p>Trendyol platformundaki ürün fiyatlarını izleyen, indirim anında uyarı veren ve fiyat geçmişi tutan akıllı takip sistemi.</p>
+                    </div>
+
+                    <div class="app-card">
+                        <div class="app-icon">📊</div>
+                        <h3>Genel Fiyat Takip</h3>
+                        <p>Çoklu e-ticaret sitelerini destekleyen, kapsamlı fiyat analizi ve karşılaştırma özelliklerine sahip gelişmiş takip botu.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="iletisim" class="section">
+            <div class="container">
+                <h2 class="section-title">İletişim</h2>
+                <div class="contact-content">
+                    <p>Projelerim hakkında bilgi almak, işbirliği yapmak veya özel bot geliştirme talepleriniz için benimle iletişime geçebilirsiniz.</p>
+                    <div class="contact-info">
+                        <div class="contact-item">
+                            <i>📧</i>
+                            <span>info@pythonsolid.com</span>
+                        </div>
+                        <div class="contact-item">
+                            <i>💬</i>
+                            <span>Telegram: @pythonsolid</span>
+                        </div>
+                        <div class="contact-item">
+                            <i>🐦</i>
+                            <span>Twitter: @pythonsolid</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 PythonSolid. Tüm hakları saklıdır.</p>
+        </div>
+    </footer>
 
     <script>
-        function toggleMenu() {
-            const nav = document.getElementById('navLinks');
-            nav.classList.toggle('show');
-        }
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Add scroll effect to navbar
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 100) {
+                header.style.background = 'rgba(255, 255, 255, 0.15)';
+            } else {
+                header.style.background = 'rgba(255, 255, 255, 0.1)';
+            }
+        });
     </script>
 </body>
 </html>
