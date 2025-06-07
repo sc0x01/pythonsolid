@@ -7,13 +7,14 @@
 
     <!-- Fontlar -->
     <link href="https://fonts.cdnfonts.com/css/orange-gummy" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
         body {
             margin: 0;
-            font-family: 'Segoe UI', sans-serif;
             background-color: #36454F;
             color: #ffffff;
+            font-family: 'Segoe UI', sans-serif;
         }
         .container {
             max-width: 1200px;
@@ -23,10 +24,10 @@
         .navbar {
             background-color: #36454F;
             padding: 16px 0;
+            border-bottom: 2px solid #ffffff33;
             position: sticky;
             top: 0;
-            z-index: 999;
-            border-bottom: 2px solid #ffffff33;
+            z-index: 1000;
         }
         .nav-inner {
             display: flex;
@@ -35,7 +36,7 @@
         }
         .logo {
             font-size: 24px;
-            font-family: 'Segoe UI', sans-serif;
+            font-weight: bold;
         }
         .nav-links {
             display: flex;
@@ -45,34 +46,56 @@
             color: #ffffff;
             text-decoration: none;
             font-size: 16px;
-            font-weight: bold;
-            letter-spacing: 1px;
             text-transform: uppercase;
             position: relative;
         }
-        .nav-links a::after {
+        .nav-links a.active::after,
+        .nav-links a:hover::after {
             content: "";
             position: absolute;
-            width: 0%;
+            width: 100%;
             height: 2px;
             bottom: -4px;
             left: 0;
             background-color: #38bdf8;
-            transition: width 0.3s;
         }
-        .nav-links a:hover::after {
-            width: 100%;
+        .menu-toggle {
+            display: none;
+            font-size: 24px;
+            cursor: pointer;
+        }
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                background-color: #36454F;
+                position: absolute;
+                top: 60px;
+                right: 24px;
+                width: 200px;
+                border: 1px solid #ccc;
+                padding: 10px;
+            }
+            .nav-links.show {
+                display: flex;
+            }
+            .menu-toggle {
+                display: block;
+            }
         }
         .hero {
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            height: 75vh;
+            height: 80vh;
             text-align: center;
             font-family: 'orange gummy', cursive;
             font-size: 72px;
-            color: #ffffff;
+            position: relative;
+        }
+        .hero-title {
+            text-shadow: 0 0 10px #00ffff, 0 0 20px #00ffff;
         }
         .loading {
             font-size: 16px;
@@ -80,18 +103,16 @@
             margin-top: 12px;
             opacity: 0.75;
         }
-        .welcome-message {
-            position: fixed;
-            bottom: 16px;
-            left: 16px;
-            font-size: 14px;
-            color: #e2e8f0;
+        .loading::after {
+            content: "";
+            animation: dots 1.5s steps(4, end) infinite;
         }
-
-        @media (max-width: 600px) {
-            .nav-links {
-                display: none;
-            }
+        @keyframes dots {
+            0% { content: ""; }
+            25% { content: "."; }
+            50% { content: ".."; }
+            75% { content: "..."; }
+            100% { content: ""; }
         }
     </style>
 </head>
@@ -99,8 +120,9 @@
     <div class="navbar">
         <div class="container nav-inner">
             <div class="logo">PythonSolid</div>
-            <div class="nav-links">
-                <a href="#">Anasayfa</a>
+            <div class="menu-toggle" onclick="toggleMenu()"><i class="fas fa-bars"></i></div>
+            <div class="nav-links" id="navLinks">
+                <a href="#" class="active">Anasayfa</a>
                 <a href="#">Portföy</a>
                 <a href="#">Uygulamalar</a>
                 <a href="#">Hakkımda</a>
@@ -110,12 +132,15 @@
     </div>
 
     <div class="hero">
-        sc0x01
-        <div class="loading">loading...</div>
+        <div class="hero-title">sc0x01</div>
+        <div class="loading">loading</div>
     </div>
 
-    <div class="welcome-message">
-        Hoşgeldiniz
-    </div>
+    <script>
+        function toggleMenu() {
+            const nav = document.getElementById('navLinks');
+            nav.classList.toggle('show');
+        }
+    </script>
 </body>
 </html>
