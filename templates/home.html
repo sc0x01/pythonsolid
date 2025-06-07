@@ -5,7 +5,39 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PythonSolid - Python Geliştirici & Bot Uzmanı</title>
+    
+    <!-- SEO Meta Tags -->
+    <title>sc0x01 - Python Bot Geliştirici | PythonSolid</title>
+    <meta name="description" content="Python bot geliştirme uzmanı sc0x01. Telegram, Twitter, Discord botları ve fiyat takip sistemleri geliştiriyorum. Modern Python çözümleri için iletişime geçin.">
+    <meta name="keywords" content="python, bot geliştirme, telegram bot, twitter bot, fiyat takip, otomasyon, web scraping, sc0x01">
+    <meta name="author" content="sc0x01">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Open Graph (Facebook/WhatsApp) -->
+    <meta property="og:title" content="sc0x01 - Python Bot Geliştirici">
+    <meta property="og:description" content="Python ile bot geliştirme ve otomasyon sistemleri uzmanı. Telegram, Twitter botları ve fiyat takip çözümleri.">
+    <meta property="og:image" content="https://pythonsolid.com/og-image.jpg">
+    <meta property="og:url" content="https://pythonsolid.com">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="PythonSolid">
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@sc0x01">
+    <meta name="twitter:creator" content="@sc0x01">
+    <meta name="twitter:title" content="sc0x01 - Python Bot Geliştirici">
+    <meta name="twitter:description" content="Python bot geliştirme uzmanı. Telegram, Twitter botları ve otomasyon sistemleri.">
+    <meta name="twitter:image" content="https://pythonsolid.com/twitter-image.jpg">
+    
+    <!-- Additional Meta Tags -->
+    <meta name="theme-color" content="#3b82f6">
+    <meta name="msapplication-TileColor" content="#3b82f6">
+    <link rel="canonical" href="https://pythonsolid.com">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
     <style>
         * {
@@ -769,6 +801,32 @@
     </footer>
 
     <script>
+        // Mobile menu toggle
+        function toggleMobileMenu() {
+            const navMenu = document.getElementById('navMenu');
+            const menuBtn = document.querySelector('.mobile-menu-btn i');
+            
+            navMenu.classList.toggle('active');
+            
+            // Change icon
+            if (navMenu.classList.contains('active')) {
+                menuBtn.className = 'fas fa-times';
+            } else {
+                menuBtn.className = 'fas fa-bars';
+            }
+        }
+
+        // Close mobile menu when clicking on links
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', function() {
+                const navMenu = document.getElementById('navMenu');
+                const menuBtn = document.querySelector('.mobile-menu-btn i');
+                
+                navMenu.classList.remove('active');
+                menuBtn.className = 'fas fa-bars';
+            });
+        });
+
         // Smooth scroll for navigation links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
