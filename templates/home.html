@@ -112,22 +112,16 @@
         }
 
         .hero-avatar {
-            width: 150px;
-            height: 150px;
+            width: 120px;
+            height: 120px;
             border-radius: 50%;
             margin: 0 auto 2rem;
             background: linear-gradient(45deg, #3b82f6, #8b5cf6);
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 4rem;
+            font-size: 3rem;
             color: white;
-            animation: float 3s ease-in-out infinite;
-        }
-
-        @keyframes float {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-10px); }
         }
 
         .hero h1 {
@@ -159,11 +153,10 @@
             display: flex;
             align-items: center;
             gap: 0.5rem;
-            transition: transform 0.3s ease;
+            transition: background 0.3s ease;
         }
 
         .tech-tag:hover {
-            transform: translateY(-2px);
             background: rgba(255, 255, 255, 0.3);
         }
 
@@ -194,8 +187,7 @@
         }
 
         .btn-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
         }
 
         .btn-secondary {
@@ -207,7 +199,6 @@
         .btn-secondary:hover {
             background: white;
             color: #3b82f6;
-            transform: translateY(-2px);
         }
 
         /* About Section */
@@ -269,12 +260,11 @@
             border-radius: 12px;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
             text-align: center;
-            transition: transform 0.3s ease;
+            transition: box-shadow 0.3s ease;
         }
 
         .skill-item:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
         }
 
         .skill-icon {
@@ -297,61 +287,79 @@
 
         .project-card {
             background: white;
-            border-radius: 16px;
+            border-radius: 12px;
             overflow: hidden;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
             border: 1px solid #e2e8f0;
+            transition: transform 0.2s ease;
         }
 
         .project-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
         }
 
         .project-header {
             background: linear-gradient(135deg, #3b82f6, #8b5cf6);
             color: white;
-            padding: 2rem;
+            padding: 1.5rem;
             text-align: center;
         }
 
         .project-icon {
-            font-size: 3rem;
+            font-size: 2.5rem;
             margin-bottom: 1rem;
         }
 
         .project-title {
-            font-size: 1.5rem;
+            font-size: 1.3rem;
             font-weight: 600;
             margin-bottom: 0.5rem;
         }
 
         .project-body {
-            padding: 2rem;
+            padding: 1.5rem;
         }
 
         .project-description {
             color: #64748b;
-            margin-bottom: 1.5rem;
+            margin-bottom: 1rem;
             line-height: 1.6;
         }
 
-        .project-features {
-            list-style: none;
-            margin-bottom: 2rem;
+        .project-tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
         }
 
-        .project-features li {
+        .tech-badge {
+            background: #e2e8f0;
+            color: #475569;
+            padding: 0.3rem 0.8rem;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+
+        .project-links {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .project-link {
             display: flex;
             align-items: center;
             gap: 0.5rem;
-            margin-bottom: 0.5rem;
-            color: #475569;
+            color: #3b82f6;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.2s ease;
         }
 
-        .project-features li i {
-            color: #10b981;
+        .project-link:hover {
+            color: #2563eb;
         }
 
         /* Contact Section */
@@ -362,69 +370,43 @@
         }
 
         .contact-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-            align-items: center;
+            max-width: 600px;
+            margin: 0 auto;
+            text-align: center;
         }
 
         .contact-info {
             font-size: 1.1rem;
             line-height: 1.8;
+            margin-bottom: 2rem;
         }
 
         .contact-methods {
-            margin-top: 2rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
         }
 
         .contact-item {
             display: flex;
+            flex-direction: column;
             align-items: center;
             gap: 1rem;
-            margin-bottom: 1rem;
-            padding: 1rem;
+            padding: 1.5rem;
             background: rgba(255, 255, 255, 0.1);
             border-radius: 12px;
-            transition: all 0.3s ease;
+            transition: all 0.2s ease;
+            text-decoration: none;
+            color: white;
         }
 
         .contact-item:hover {
             background: rgba(255, 255, 255, 0.2);
-            transform: translateX(5px);
         }
 
-        .contact-form {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            padding: 2rem;
-            border-radius: 16px;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-        }
-
-        .form-group {
-            margin-bottom: 1.5rem;
-        }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 0.5rem;
-            font-weight: 500;
-        }
-
-        .form-group input,
-        .form-group textarea {
-            width: 100%;
-            padding: 12px;
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            border-radius: 8px;
-            background: rgba(255, 255, 255, 0.1);
-            color: white;
-            font-size: 1rem;
-        }
-
-        .form-group input::placeholder,
-        .form-group textarea::placeholder {
-            color: rgba(255, 255, 255, 0.7);
+        .contact-item i {
+            font-size: 2rem;
+            color: #10b981;
         }
 
         /* Footer */
@@ -474,8 +456,7 @@
                 font-size: 1.1rem;
             }
 
-            .about-content,
-            .contact-content {
+            .about-content {
                 grid-template-columns: 1fr;
                 gap: 2rem;
             }
@@ -646,34 +627,24 @@
                         <div class="project-icon">
                             <i class="fab fa-telegram"></i>
                         </div>
-                        <h3 class="project-title">Telegram Bot Sistemi</h3>
+                        <h3 class="project-title">Telegram Price Bot</h3>
                     </div>
                     <div class="project-body">
-                        <p class="project-description">Kullanıcıların günlük işlerini otomatikleştiren, bildirim ve takip sistemi olan Telegram botu.</p>
-                        <ul class="project-features">
-                            <li><i class="fas fa-check"></i> Otomatik bildirimler</li>
-                            <li><i class="fas fa-check"></i> Kullanıcı dostu arayüz</li>
-                            <li><i class="fas fa-check"></i> Komut tabanlı işlem</li>
-                            <li><i class="fas fa-check"></i> Veri saklama sistemi</li>
-                        </ul>
-                    </div>
-                </div>
-
-                <div class="project-card">
-                    <div class="project-header">
-                        <div class="project-icon">
-                            <i class="fas fa-chart-line"></i>
+                        <p class="project-description">E-ticaret sitelerindeki ürün fiyatlarını takip eden ve değişikliklerde anında bildirim gönderen Telegram botu.</p>
+                        <div class="project-tech">
+                            <span class="tech-badge">Python</span>
+                            <span class="tech-badge">Telegram API</span>
+                            <span class="tech-badge">BeautifulSoup</span>
+                            <span class="tech-badge">SQLite</span>
                         </div>
-                        <h3 class="project-title">Fiyat Takip Botu</h3>
-                    </div>
-                    <div class="project-body">
-                        <p class="project-description">E-ticaret sitelerindeki ürün fiyatlarını takip eden ve değişikliklerde bildirim gönderen sistem.</p>
-                        <ul class="project-features">
-                            <li><i class="fas fa-check"></i> Çoklu site desteği</li>
-                            <li><i class="fas fa-check"></i> Fiyat geçmişi grafiği</li>
-                            <li><i class="fas fa-check"></i> E-posta bildirimleri</li>
-                            <li><i class="fas fa-check"></i> Hedef fiyat alarmı</li>
-                        </ul>
+                        <div class="project-links">
+                            <a href="#" class="project-link">
+                                <i class="fab fa-github"></i> GitHub
+                            </a>
+                            <a href="#" class="project-link">
+                                <i class="fas fa-external-link-alt"></i> Demo
+                            </a>
+                        </div>
                     </div>
                 </div>
 
@@ -682,16 +653,50 @@
                         <div class="project-icon">
                             <i class="fab fa-twitter"></i>
                         </div>
-                        <h3 class="project-title">Twitter Otomasyon Botu</h3>
+                        <h3 class="project-title">Twitter Automation</h3>
                     </div>
                     <div class="project-body">
-                        <p class="project-description">Twitter hesapları için otomatik etkileşim ve içerik paylaşım sistemi.</p>
-                        <ul class="project-features">
-                            <li><i class="fas fa-check"></i> Otomatik tweet paylaşımı</li>
-                            <li><i class="fas fa-check"></i> Hashtag takibi</li>
-                            <li><i class="fas fa-check"></i> DM yanıtlama</li>
-                            <li><i class="fas fa-check"></i> Analitik raporlama</li>
-                        </ul>
+                        <p class="project-description">Twitter hesapları için otomatik tweet paylaşımı, hashtag takibi ve DM yanıtlama sistemi.</p>
+                        <div class="project-tech">
+                            <span class="tech-badge">Python</span>
+                            <span class="tech-badge">Twitter API v2</span>
+                            <span class="tech-badge">Schedule</span>
+                            <span class="tech-badge">JSON</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="#" class="project-link">
+                                <i class="fab fa-github"></i> GitHub
+                            </a>
+                            <a href="#" class="project-link">
+                                <i class="fas fa-book"></i> Docs
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-header">
+                        <div class="project-icon">
+                            <i class="fas fa-robot"></i>
+                        </div>
+                        <h3 class="project-title">Discord Mod Bot</h3>
+                    </div>
+                    <div class="project-body">
+                        <p class="project-description">Discord sunucuları için gelişmiş moderasyon botu. Spam koruması ve otomatik kullanıcı yönetimi.</p>
+                        <div class="project-tech">
+                            <span class="tech-badge">Python</span>
+                            <span class="tech-badge">Discord.py</span>
+                            <span class="tech-badge">PostgreSQL</span>
+                            <span class="tech-badge">Redis</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="#" class="project-link">
+                                <i class="fab fa-github"></i> GitHub
+                            </a>
+                            <a href="#" class="project-link">
+                                <i class="fas fa-plus"></i> Invite
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -707,60 +712,33 @@
             </div>
 
             <div class="contact-content">
-                <div>
-                    <div class="contact-info">
-                        <p>Python bot geliştirme, fiyat takip sistemleri veya web uygulamaları hakkında konuşmak isterseniz benimle iletişime geçebilirsiniz.</p>
-                        <p>Yeni projeler ve işbirlikleri için her zaman açığım!</p>
-                    </div>
-
-                    <div class="contact-methods">
-                        <div class="contact-item">
-                            <i class="fas fa-envelope"></i>
-                            <div>
-                                <strong>E-posta</strong>
-                                <p>info@pythonsolid.com</p>
-                            </div>
-                        </div>
-                        <div class="contact-item">
-                            <i class="fab fa-telegram"></i>
-                            <div>
-                                <strong>Telegram</strong>
-                                <p>@pythonsolid</p>
-                            </div>
-                        </div>
-                        <div class="contact-item">
-                            <i class="fab fa-github"></i>
-                            <div>
-                                <strong>GitHub</strong>
-                                <p>github.com/pythonsolid</p>
-                            </div>
-                        </div>
-                    </div>
+                <div class="contact-info">
+                    <p>Python bot geliştirme, fiyat takip sistemleri veya web uygulamaları hakkında konuşmak isterseniz benimle iletişime geçebilirsiniz.</p>
+                    <p>Yeni projeler ve işbirlikleri için her zaman açığım!</p>
                 </div>
 
-                <div class="contact-form">
-                    <form>
-                        <div class="form-group">
-                            <label>Adınız</label>
-                            <input type="text" placeholder="Adınızı girin">
+                <div class="contact-methods">
+                    <a href="mailto:info@pythonsolid.com" class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <div>
+                            <strong>E-posta</strong>
+                            <p>info@pythonsolid.com</p>
                         </div>
-                        <div class="form-group">
-                            <label>E-posta</label>
-                            <input type="email" placeholder="E-posta adresinizi girin">
+                    </a>
+                    <a href="#" class="contact-item">
+                        <i class="fab fa-telegram"></i>
+                        <div>
+                            <strong>Telegram</strong>
+                            <p>@sc0x01</p>
                         </div>
-                        <div class="form-group">
-                            <label>Konu</label>
-                            <input type="text" placeholder="Mesaj konusu">
+                    </a>
+                    <a href="#" class="contact-item">
+                        <i class="fab fa-github"></i>
+                        <div>
+                            <strong>GitHub</strong>
+                            <p>github.com/sc0x01</p>
                         </div>
-                        <div class="form-group">
-                            <label>Mesajınız</label>
-                            <textarea rows="5" placeholder="Mesajınızı yazın..."></textarea>
-                        </div>
-                        <button type="submit" class="btn btn-primary" style="width: 100%;">
-                            <i class="fas fa-paper-plane"></i>
-                            Mesaj Gönder
-                        </button>
-                    </form>
+                    </a>
                 </div>
             </div>
         </div>
@@ -804,35 +782,6 @@
                 navbar.style.background = 'rgba(255, 255, 255, 0.95)';
                 navbar.style.boxShadow = 'none';
             }
-        });
-
-        // Form submission
-        document.querySelector('.contact-form form').addEventListener('submit', function(e) {
-            e.preventDefault();
-            alert('Mesajınız için teşekkürler! En kısa sürede dönüş yapacağım.');
-        });
-
-        // Add animation on scroll
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
-
-        const observer = new IntersectionObserver(function(entries) {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0)';
-                }
-            });
-        }, observerOptions);
-
-        // Animate elements on scroll
-        document.querySelectorAll('.project-card, .skill-item').forEach(el => {
-            el.style.opacity = '0';
-            el.style.transform = 'translateY(30px)';
-            el.style.transition = 'all 0.6s ease';
-            observer.observe(el);
         });
     </script>
 </body>
