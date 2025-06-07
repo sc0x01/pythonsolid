@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PythonSolid</title>
+    <title>PythonSolid - Python Geliştirici & Bot Uzmanı</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -12,749 +13,774 @@
         }
 
         body {
-            font-family: 'Arial', sans-serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             line-height: 1.6;
             color: #333;
-            background: linear-gradient(135deg, #536878 0%, #3d4f5c 100%);
-            min-height: 100vh;
-            transition: all 0.3s ease;
-            cursor: none;
+            overflow-x: hidden;
         }
 
-        /* Dark/Light Mode */
-        body.light-mode {
-            background: linear-gradient(135deg, #f8fbfc 0%, #ffffff 100%);
-            color: #333;
-        }
-
-        body.light-mode .hero h1,
-        body.light-mode .section-title {
-            color: #536878;
-            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
-        }
-
-        body.light-mode .hero p {
-            color: #666;
-        }
-
-        body.light-mode .about-content,
-        body.light-mode .app-card,
-        body.light-mode .contact-content {
-            background: rgba(83, 104, 120, 0.08);
-            color: #444;
-            border: 1px solid rgba(83, 104, 120, 0.15);
-        }
-
-        body.light-mode .app-card h3 {
-            color: #536878;
-        }
-
-        body.light-mode header {
-            background: rgba(255, 255, 255, 0.9);
-            border-bottom: 1px solid rgba(83, 104, 120, 0.1);
-        }
-
-        body.light-mode .nav-links a {
-            color: #536878;
-        }
-
-        body.light-mode .nav-links a:hover {
-            background: rgba(83, 104, 120, 0.1);
-        }
-
-        body.light-mode .contact-item i {
-            color: #536878;
-        }
-
-        body.light-mode .contact-item {
-            background: rgba(83, 104, 120, 0.1);
-        }
-
-        body.light-mode .contact-item:hover {
-            background: rgba(83, 104, 120, 0.15);
-        }
-
-        body.light-mode .theme-toggle {
-            background: rgba(83, 104, 120, 0.2);
-            color: #536878;
-        }
-
-        body.light-mode .theme-toggle:hover {
-            background: rgba(83, 104, 120, 0.3);
-        }
-
-        /* Progress Bar */
-        .progress-bar {
+        /* Navbar */
+        .navbar {
             position: fixed;
             top: 0;
-            left: 0;
-            width: 0%;
-            height: 4px;
-            background: linear-gradient(90deg, #a8c8e1, #7fb3d3);
-            z-index: 9998;
-            transition: width 0.3s ease;
-        }
-
-        /* Theme Toggle */
-        .theme-toggle {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            z-index: 1001;
-            background: rgba(255, 255, 255, 0.2);
-            border: none;
-            color: white;
-            padding: 12px;
-            border-radius: 50%;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            font-size: 1.2rem;
-            width: 50px;
-            height: 50px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .theme-toggle:hover {
-            background: rgba(255, 255, 255, 0.3);
-            transform: scale(1.1);
-        }
-
-        /* Particles */
-        .particles {
-            position: fixed;
-            top: 0;
-            left: 0;
             width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: 1;
-        }
-
-        .particle {
-            position: absolute;
-            color: rgba(255, 255, 255, 0.3);
-            font-size: 12px;
-            animation: float 6s ease-in-out infinite;
-        }
-
-        @keyframes float {
-            0%, 100% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
-            10% { opacity: 1; }
-            90% { opacity: 1; }
-            100% { transform: translateY(-100px) rotate(360deg); opacity: 0; }
-        }
-
-        /* Cursor Trail */
-        .cursor-dot {
-            width: 8px;
-            height: 8px;
-            background: #a8c8e1;
-            border-radius: 50%;
-            position: fixed;
-            pointer-events: none;
-            z-index: 9999;
-            transition: transform 0.1s ease;
-            box-shadow: 0 0 10px rgba(168, 200, 225, 0.5);
-        }
-
-        /* Scroll Animations */
-        .fade-in {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.6s ease;
-        }
-
-        .fade-in.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .slide-in-left {
-            opacity: 0;
-            transform: translateX(-50px);
-            transition: all 0.6s ease;
-        }
-
-        .slide-in-left.visible {
-            opacity: 1;
-            transform: translateX(0);
-        }
-
-        .slide-in-right {
-            opacity: 0;
-            transform: translateX(50px);
-            transition: all 0.6s ease;
-        }
-
-        .slide-in-right.visible {
-            opacity: 1;
-            transform: translateX(0);
-        }
-
-        /* Typing Effect */
-        .typing-text {
-            display: inline-block;
-        }
-
-        .typing-cursor {
-            display: inline-block;
-            background: #a8c8e1;
-            width: 3px;
-            animation: blink 1s infinite;
-            margin-left: 2px;
-        }
-
-        @keyframes blink {
-            0%, 50% { opacity: 1; }
-            51%, 100% { opacity: 0; }
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        /* Header & Navbar */
-        header {
-            background: rgba(255, 255, 255, 0.1);
+            background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(10px);
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
             z-index: 1000;
             padding: 1rem 0;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
         }
 
-        nav {
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
             display: flex;
             justify-content: space-between;
             align-items: center;
+            padding: 0 2rem;
         }
 
         .logo {
-            font-size: 2rem;
+            font-size: 1.5rem;
             font-weight: bold;
-            color: white;
+            color: #3b82f6;
             text-decoration: none;
         }
 
-        .nav-links {
+        .nav-menu {
             display: flex;
             list-style: none;
             gap: 2rem;
         }
 
-        .nav-links a {
-            color: white;
+        .nav-link {
             text-decoration: none;
+            color: #333;
             font-weight: 500;
             transition: color 0.3s ease;
-            padding: 0.5rem 1rem;
-            border-radius: 5px;
+            position: relative;
         }
 
-        .nav-links a:hover {
-            background: rgba(255, 255, 255, 0.2);
+        .nav-link:hover {
+            color: #3b82f6;
         }
 
-        /* Main Content */
-        main {
-            margin-top: 80px;
-            padding: 2rem 0;
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background: #3b82f6;
+            transition: width 0.3s ease;
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
         }
 
         /* Hero Section */
         .hero {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
             text-align: center;
-            padding: 4rem 0;
             color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><defs><pattern id="grid" width="50" height="50" patternUnits="userSpaceOnUse"><path d="M 50 0 L 0 0 0 50" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="1"/></pattern></defs><rect width="100%" height="100%" fill="url(%23grid)"/></svg>');
+            opacity: 0.3;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            padding: 2rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-avatar {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            margin: 0 auto 2rem;
+            background: linear-gradient(45deg, #3b82f6, #8b5cf6);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            color: white;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
         }
 
         .hero h1 {
             font-size: 3.5rem;
             margin-bottom: 1rem;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            font-weight: 700;
         }
 
-        .hero p {
-            font-size: 1.2rem;
+        .hero .subtitle {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
             opacity: 0.9;
+        }
+
+        .tech-tags {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .tech-tag {
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: transform 0.3s ease;
+        }
+
+        .tech-tag:hover {
+            transform: translateY(-2px);
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        .cta-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 12px 30px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .btn-primary {
+            background: white;
+            color: #3b82f6;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+
+        .btn-secondary:hover {
+            background: white;
+            color: #3b82f6;
+            transform: translateY(-2px);
+        }
+
+        /* About Section */
+        .about {
+            padding: 100px 0;
+            background: #f8fafc;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            color: #1e293b;
+            margin-bottom: 1rem;
+        }
+
+        .section-subtitle {
+            font-size: 1.1rem;
+            color: #64748b;
             max-width: 600px;
             margin: 0 auto;
         }
 
-        /* Sections */
-        .section {
-            padding: 4rem 0;
-            margin: 2rem 0;
-        }
-
-        .section-title {
-            text-align: center;
-            font-size: 2.5rem;
-            margin-bottom: 3rem;
-            color: white;
-            text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
-        }
-
-        /* About Section */
         .about-content {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            padding: 3rem;
-            border-radius: 15px;
-            color: white;
-            text-align: center;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about-text {
             font-size: 1.1rem;
             line-height: 1.8;
-            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: #475569;
         }
 
-        /* Applications Section */
-        .apps-grid {
+        .about-text p {
+            margin-bottom: 1.5rem;
+        }
+
+        .skills-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
         }
 
-        .app-card {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            padding: 2rem;
-            border-radius: 15px;
+        .skill-item {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
             text-align: center;
-            color: white;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: transform 0.3s ease;
         }
 
-        .app-card:hover {
+        .skill-item:hover {
             transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-            background: rgba(255, 255, 255, 0.15);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
         }
 
-        .app-card h3 {
-            font-size: 1.5rem;
+        .skill-icon {
+            font-size: 2.5rem;
             margin-bottom: 1rem;
-            color: #ffd700;
+            color: #3b82f6;
         }
 
-        .app-card p {
-            font-size: 1rem;
-            opacity: 0.9;
-            line-height: 1.6;
+        /* Projects Section */
+        .projects {
+            padding: 100px 0;
+            background: white;
         }
 
-        .app-icon {
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-card {
+            background: white;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            border: 1px solid #e2e8f0;
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .project-header {
+            background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+            color: white;
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .project-icon {
             font-size: 3rem;
             margin-bottom: 1rem;
         }
 
+        .project-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .project-body {
+            padding: 2rem;
+        }
+
+        .project-description {
+            color: #64748b;
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+
+        .project-features {
+            list-style: none;
+            margin-bottom: 2rem;
+        }
+
+        .project-features li {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 0.5rem;
+            color: #475569;
+        }
+
+        .project-features li i {
+            color: #10b981;
+        }
+
         /* Contact Section */
-        .contact-content {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            padding: 3rem;
-            border-radius: 15px;
+        .contact {
+            padding: 100px 0;
+            background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
             color: white;
-            text-align: center;
-            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .contact-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
         }
 
         .contact-info {
-            display: flex;
-            justify-content: center;
-            gap: 3rem;
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        .contact-methods {
             margin-top: 2rem;
-            flex-wrap: wrap;
         }
 
         .contact-item {
             display: flex;
             align-items: center;
             gap: 1rem;
-            padding: 1rem 2rem;
+            margin-bottom: 1rem;
+            padding: 1rem;
             background: rgba(255, 255, 255, 0.1);
-            border-radius: 10px;
-            transition: background 0.3s ease;
+            border-radius: 12px;
+            transition: all 0.3s ease;
         }
 
         .contact-item:hover {
             background: rgba(255, 255, 255, 0.2);
+            transform: translateX(5px);
         }
 
-        .contact-item i {
-            font-size: 1.5rem;
-            color: #ffd700;
+        .contact-form {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 2rem;
+            border-radius: 16px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            font-size: 1rem;
+        }
+
+        .form-group input::placeholder,
+        .form-group textarea::placeholder {
+            color: rgba(255, 255, 255, 0.7);
         }
 
         /* Footer */
-        footer {
+        .footer {
+            background: #0f172a;
+            color: white;
             text-align: center;
             padding: 2rem 0;
-            color: white;
-            opacity: 0.8;
         }
 
-        /* Mobile Responsive */
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .social-link {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+            height: 50px;
+            background: #3b82f6;
+            color: white;
+            border-radius: 50%;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .social-link:hover {
+            transform: translateY(-3px);
+            background: #2563eb;
+        }
+
+        /* Responsive Design */
         @media (max-width: 768px) {
-            .theme-toggle {
-                top: 15px;
-                right: 15px;
-                width: 45px;
-                height: 45px;
-                font-size: 1rem;
-            }
-
-            .nav-links {
-                gap: 0.5rem;
-                flex-wrap: wrap;
-            }
-
-            .nav-links a {
-                padding: 0.3rem 0.7rem;
-                font-size: 0.9rem;
-            }
-
-            .hero {
-                padding: 2rem 0;
-                margin-top: 1rem;
+            .nav-menu {
+                display: none;
             }
 
             .hero h1 {
                 font-size: 2.5rem;
-                margin-bottom: 1rem;
             }
 
-            .hero p {
-                font-size: 1rem;
-                padding: 0 1rem;
-            }
-
-            .section {
-                padding: 2rem 0;
-            }
-
-            .section-title {
-                font-size: 2rem;
-                margin-bottom: 2rem;
-            }
-
-            .apps-grid {
-                grid-template-columns: 1fr;
-                gap: 1.5rem;
-            }
-
-            .contact-info {
-                flex-direction: column;
-                gap: 1rem;
-            }
-
-            .logo {
-                font-size: 1.3rem;
-            }
-
-            .about-content,
-            .contact-content {
-                padding: 2rem 1.5rem;
-            }
-
-            .app-card {
-                padding: 1.5rem;
-            }
-
-            nav {
-                padding: 0 10px;
-            }
-
-            .container {
-                padding: 0 15px;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .theme-toggle {
-                top: 10px;
-                right: 10px;
-                width: 40px;
-                height: 40px;
-                font-size: 0.9rem;
-            }
-
-            .nav-links {
-                gap: 0.3rem;
-            }
-
-            .nav-links a {
-                padding: 0.2rem 0.5rem;
-                font-size: 0.8rem;
-            }
-
-            .hero h1 {
-                font-size: 2rem;
-            }
-
-            .hero p {
-                font-size: 0.9rem;
-            }
-
-            .section-title {
-                font-size: 1.7rem;
-            }
-
-            .logo {
+            .hero .subtitle {
                 font-size: 1.1rem;
             }
 
             .about-content,
             .contact-content {
-                padding: 1.5rem 1rem;
+                grid-template-columns: 1fr;
+                gap: 2rem;
             }
 
-            .app-card {
-                padding: 1.2rem;
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .tech-tags {
+                justify-content: center;
             }
         }
 
-        /* Smooth Scroll */
+        /* Smooth scrolling */
         html {
             scroll-behavior: smooth;
+        }
+
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #f1f5f9;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #3b82f6;
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #2563eb;
         }
     </style>
 </head>
 <body>
-    <!-- Progress Bar -->
-    <div class="progress-bar" id="progressBar"></div>
-
-    <!-- Theme Toggle -->
-    <button class="theme-toggle" id="themeToggle">🌙</button>
-
-    <!-- Particles -->
-    <div class="particles" id="particles"></div>
-
-    <!-- Cursor Trail -->
-    <div class="cursor-dot" id="cursorDot"></div>
-    <header>
-        <nav class="container">
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
             <a href="#" class="logo">PythonSolid</a>
-            <ul class="nav-links">
-                <li><a href="#anasayfa">Anasayfa</a></li>
-                <li><a href="#hakkimda">Hakkımda</a></li>
-                <li><a href="#uygulamalar">Uygulamalar</a></li>
-                <li><a href="#iletisim">İletişim</a></li>
+            <ul class="nav-menu">
+                <li><a href="#home" class="nav-link">Ana Sayfa</a></li>
+                <li><a href="#about" class="nav-link">Hakkımda</a></li>
+                <li><a href="#projects" class="nav-link">Projeler</a></li>
+                <li><a href="#contact" class="nav-link">İletişim</a></li>
             </ul>
-        </nav>
-    </header>
+        </div>
+    </nav>
 
-    <main>
-        <!-- Hero Section -->
-        <section id="anasayfa" class="hero">
-            <div class="container">
-                <h1 class="typing-text" id="typingText"><span id="typingCursor" class="typing-cursor"></span></h1>
-                <p class="fade-in">Python ile güçlü ve etkili uygulamalar geliştiren bir geliştiricinin dünyasına hoş geldiniz.</p>
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <div class="hero-avatar">
+                <i class="fab fa-python"></i>
             </div>
-        </section>
-
-        <!-- About Section -->
-        <section id="hakkimda" class="section">
-            <div class="container">
-                <h2 class="section-title fade-in">Hakkımda</h2>
-                <div class="about-content slide-in-left">
-                    <p>
-                        Merhaba! Ben kod yazmayı seven, Python dilinde uzmanlaşmış bir geliştiriciyim. 
-                        Günlük hayatı kolaylaştıran pratik uygulamalar ve botlar geliştirmeyi seviyorum. 
-                        Özellikle sosyal medya otomasyonu, e-ticaret fiyat takibi ve mesajlaşma uygulamaları 
-                        konularında deneyimliyim. Her projeyi bir öğrenme fırsatı olarak görüyor ve 
-                        sürekli kendimi geliştirmeye odaklanıyorum. Kodlama benim için sadece bir meslek değil, 
-                        aynı zamanda tutkum ve yaratıcılığımı ifade etme şeklim.
-                    </p>
+            <h1>Merhaba, Ben <span style="color: #fbbf24;">Python</span> Geliştiricisi</h1>
+            <p class="subtitle">Bot geliştirme, fiyat takip sistemleri ve web uygulamaları konusunda uzmanlaşıyorum</p>
+            
+            <div class="tech-tags">
+                <div class="tech-tag">
+                    <i class="fab fa-python"></i>
+                    Python
+                </div>
+                <div class="tech-tag">
+                    <i class="fas fa-robot"></i>
+                    Bot Geliştirme
+                </div>
+                <div class="tech-tag">
+                    <i class="fab fa-telegram"></i>
+                    Telegram Bots
+                </div>
+                <div class="tech-tag">
+                    <i class="fab fa-twitter"></i>
+                    Twitter Bots
+                </div>
+                <div class="tech-tag">
+                    <i class="fas fa-chart-line"></i>
+                    Fiyat Takip
                 </div>
             </div>
-        </section>
 
-        <!-- Applications Section -->
-        <section id="uygulamalar" class="section">
-            <div class="container">
-                <h2 class="section-title fade-in">Uygulamalar</h2>
-                <div class="apps-grid">
-                    <div class="app-card fade-in">
-                        <div class="app-icon">🐦</div>
-                        <h3>Twitter Botu</h3>
-                        <p>Otomatik tweet atma, beğeni, retweet ve takip işlemlerini gerçekleştiren gelişmiş Twitter botu. Belirlenen zamanlarda içerik paylaşımı yapabilir.</p>
-                    </div>
-
-                    <div class="app-card fade-in">
-                        <div class="app-icon">💬</div>
-                        <h3>WhatsApp Botu</h3>
-                        <p>WhatsApp üzerinden otomatik mesaj gönderimi, grup yönetimi ve toplu mesaj özelliklerini içeren akıllı bot uygulaması.</p>
-                    </div>
-
-                    <div class="app-card fade-in">
-                        <div class="app-icon">📱</div>
-                        <h3>Telegram Botu</h3>
-                        <p>Telegram API kullanarak geliştirilmiş çok fonksiyonlu bot. Komut işleme, dosya paylaşımı ve interaktif özellikler içerir.</p>
-                    </div>
-
-                    <div class="app-card fade-in">
-                        <div class="app-icon">🛒</div>
-                        <h3>Hepsiburada Fiyat Takip</h3>
-                        <p>Hepsiburada üzerindeki ürünlerin fiyat değişimlerini takip eden ve belirlenen fiyata düştüğünde bildirim gönderen bot.</p>
-                    </div>
-
-                    <div class="app-card fade-in">
-                        <div class="app-icon">🏪</div>
-                        <h3>Trendyol Fiyat Takip</h3>
-                        <p>Trendyol platformundaki ürün fiyatlarını izleyen, indirim anında uyarı veren ve fiyat geçmişi tutan akıllı takip sistemi.</p>
-                    </div>
-
-                    <div class="app-card fade-in">
-                        <div class="app-icon">📊</div>
-                        <h3>Genel Fiyat Takip</h3>
-                        <p>Çoklu e-ticaret sitelerini destekleyen, kapsamlı fiyat analizi ve karşılaştırma özelliklerine sahip gelişmiş takip botu.</p>
-                    </div>
-                </div>
+            <div class="cta-buttons">
+                <a href="#projects" class="btn btn-primary">
+                    <i class="fas fa-code"></i>
+                    Projelerime Bak
+                </a>
+                <a href="#contact" class="btn btn-secondary">
+                    <i class="fas fa-envelope"></i>
+                    İletişime Geç
+                </a>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <!-- Contact Section -->
-        <section id="iletisim" class="section">
-            <div class="container">
-                <h2 class="section-title fade-in">İletişim</h2>
-                <div class="contact-content slide-in-right">
-                    <p>Projelerim hakkında bilgi almak, işbirliği yapmak veya özel bot geliştirme talepleriniz için benimle iletişime geçebilirsiniz.</p>
-                    <div class="contact-info">
-                        <div class="contact-item">
-                            <i>📧</i>
-                            <span>info@pythonsolid.com</span>
-                        </div>
-                        <div class="contact-item">
-                            <i>💬</i>
-                            <span>Telegram: @pythonsolid</span>
-                        </div>
-                        <div class="contact-item">
-                            <i>🐦</i>
-                            <span>Twitter: @pythonsolid</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <footer>
+    <!-- About Section -->
+    <section id="about" class="about">
         <div class="container">
-            <p>&copy; 2025 PythonSolid. Tüm hakları saklıdır.</p>
+            <div class="section-header">
+                <h2 class="section-title">Hakkımda</h2>
+                <p class="section-subtitle">Python ile güçlü bot sistemleri ve web uygulamaları geliştiren bir yazılım geliştiricisiyim</p>
+            </div>
+
+            <div class="about-content">
+                <div class="about-text">
+                    <p>Python öğrenme yolculuğumda kendimi bot geliştirme ve otomasyon sistemleri üzerine odakladım. Özellikle Telegram ve Twitter botları geliştirme konusunda deneyim kazanıyorum.</p>
+                    
+                    <p>Fiyat takip sistemleri, otomatik bildirim sistemleri ve kullanıcı dostu bot arayüzleri oluşturmayı seviyorum. Her proje, Python becerilerimi geliştirmek için yeni bir fırsat.</p>
+                    
+                    <p>Amacım, günlük hayatı kolaylaştıran akıllı botlar ve sistemler geliştirmek. Teknolojinin gücünü kullanarak pratik çözümler üretmeye odaklanıyorum.</p>
+                </div>
+
+                <div class="skills-grid">
+                    <div class="skill-item">
+                        <div class="skill-icon">
+                            <i class="fab fa-python"></i>
+                        </div>
+                        <h3>Python</h3>
+                        <p>Temel seviye Python geliştirme</p>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-icon">
+                            <i class="fas fa-robot"></i>
+                        </div>
+                        <h3>Bot Geliştirme</h3>
+                        <p>Telegram & Twitter bot sistemleri</p>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-icon">
+                            <i class="fas fa-code"></i>
+                        </div>
+                        <h3>Web Teknolojileri</h3>
+                        <p>HTML, CSS, PHP temel bilgi</p>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-icon">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <h3>Veri Analizi</h3>
+                        <p>Fiyat takip ve trend analizi</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="projects">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Üzerinde Çalıştığım Projeler</h2>
+                <p class="section-subtitle">Python ile geliştirdiğim ve geliştirmeyi planladığım projeler</p>
+            </div>
+
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-header">
+                        <div class="project-icon">
+                            <i class="fab fa-telegram"></i>
+                        </div>
+                        <h3 class="project-title">Telegram Bot Sistemi</h3>
+                    </div>
+                    <div class="project-body">
+                        <p class="project-description">Kullanıcıların günlük işlerini otomatikleştiren, bildirim ve takip sistemi olan Telegram botu.</p>
+                        <ul class="project-features">
+                            <li><i class="fas fa-check"></i> Otomatik bildirimler</li>
+                            <li><i class="fas fa-check"></i> Kullanıcı dostu arayüz</li>
+                            <li><i class="fas fa-check"></i> Komut tabanlı işlem</li>
+                            <li><i class="fas fa-check"></i> Veri saklama sistemi</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-header">
+                        <div class="project-icon">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <h3 class="project-title">Fiyat Takip Botu</h3>
+                    </div>
+                    <div class="project-body">
+                        <p class="project-description">E-ticaret sitelerindeki ürün fiyatlarını takip eden ve değişikliklerde bildirim gönderen sistem.</p>
+                        <ul class="project-features">
+                            <li><i class="fas fa-check"></i> Çoklu site desteği</li>
+                            <li><i class="fas fa-check"></i> Fiyat geçmişi grafiği</li>
+                            <li><i class="fas fa-check"></i> E-posta bildirimleri</li>
+                            <li><i class="fas fa-check"></i> Hedef fiyat alarmı</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-header">
+                        <div class="project-icon">
+                            <i class="fab fa-twitter"></i>
+                        </div>
+                        <h3 class="project-title">Twitter Otomasyon Botu</h3>
+                    </div>
+                    <div class="project-body">
+                        <p class="project-description">Twitter hesapları için otomatik etkileşim ve içerik paylaşım sistemi.</p>
+                        <ul class="project-features">
+                            <li><i class="fas fa-check"></i> Otomatik tweet paylaşımı</li>
+                            <li><i class="fas fa-check"></i> Hashtag takibi</li>
+                            <li><i class="fas fa-check"></i> DM yanıtlama</li>
+                            <li><i class="fas fa-check"></i> Analitik raporlama</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">İletişim</h2>
+                <p class="section-subtitle">Projeleriniz için benimle iletişime geçin</p>
+            </div>
+
+            <div class="contact-content">
+                <div>
+                    <div class="contact-info">
+                        <p>Python bot geliştirme, fiyat takip sistemleri veya web uygulamaları hakkında konuşmak isterseniz benimle iletişime geçebilirsiniz.</p>
+                        <p>Yeni projeler ve işbirlikleri için her zaman açığım!</p>
+                    </div>
+
+                    <div class="contact-methods">
+                        <div class="contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <div>
+                                <strong>E-posta</strong>
+                                <p>info@pythonsolid.com</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fab fa-telegram"></i>
+                            <div>
+                                <strong>Telegram</strong>
+                                <p>@pythonsolid</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fab fa-github"></i>
+                            <div>
+                                <strong>GitHub</strong>
+                                <p>github.com/pythonsolid</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="contact-form">
+                    <form>
+                        <div class="form-group">
+                            <label>Adınız</label>
+                            <input type="text" placeholder="Adınızı girin">
+                        </div>
+                        <div class="form-group">
+                            <label>E-posta</label>
+                            <input type="email" placeholder="E-posta adresinizi girin">
+                        </div>
+                        <div class="form-group">
+                            <label>Konu</label>
+                            <input type="text" placeholder="Mesaj konusu">
+                        </div>
+                        <div class="form-group">
+                            <label>Mesajınız</label>
+                            <textarea rows="5" placeholder="Mesajınızı yazın..."></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary" style="width: 100%;">
+                            <i class="fas fa-paper-plane"></i>
+                            Mesaj Gönder
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="social-links">
+                <a href="#" class="social-link"><i class="fab fa-github"></i></a>
+                <a href="#" class="social-link"><i class="fab fa-telegram"></i></a>
+                <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
+            </div>
+            <p>&copy; 2025 PythonSolid.com - Tüm hakları saklıdır.</p>
         </div>
     </footer>
 
     <script>
-        // Progress Bar
-        window.addEventListener('scroll', () => {
-            const scrollTop = document.documentElement.scrollTop;
-            const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-            const scrollPercent = (scrollTop / scrollHeight) * 100;
-            document.getElementById('progressBar').style.width = scrollPercent + '%';
-        });
-
-        // Theme Toggle
-        const themeToggle = document.getElementById('themeToggle');
-        themeToggle.addEventListener('click', () => {
-            document.body.classList.toggle('light-mode');
-            themeToggle.textContent = document.body.classList.contains('light-mode') ? '☀️' : '🌙';
-        });
-
-        // Typing Effect
-        const typingText = document.getElementById('typingText');
-        const typingCursor = document.getElementById('typingCursor');
-        const text = 'PythonSolid';
-        let index = 0;
-
-        function typeText() {
-            if (index < text.length) {
-                typingText.insertBefore(document.createTextNode(text.charAt(index)), typingCursor);
-                index++;
-                setTimeout(typeText, 200);
-            } else {
-                // Remove cursor after typing is complete
-                setTimeout(() => {
-                    typingCursor.style.display = 'none';
-                }, 1000);
-            }
-        }
-
-        setTimeout(typeText, 500); // Start immediately
-
-        // Particles
-        function createParticle() {
-            const particle = document.createElement('div');
-            particle.className = 'particle';
-            const particles = ['<', '>', '{', '}', '(', ')', ';', 'def', 'if', 'for', 'import', 'class', 'return', 'print'];
-            particle.textContent = particles[Math.floor(Math.random() * particles.length)];
-            particle.style.left = Math.random() * 100 + '%';
-            particle.style.animationDuration = (Math.random() * 3 + 3) + 's';
-            particle.style.fontSize = (Math.random() * 10 + 10) + 'px';
-            
-            document.getElementById('particles').appendChild(particle);
-            
-            setTimeout(() => {
-                particle.remove();
-            }, 6000);
-        }
-
-        setInterval(createParticle, 500);
-
-        // Cursor Trail (only dot)
-        const cursorDot = document.getElementById('cursorDot');
-
-        document.addEventListener('mousemove', (e) => {
-            cursorDot.style.left = e.clientX + 'px';
-            cursorDot.style.top = e.clientY + 'px';
-        });
-
-        // Scroll Triggered Animations
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                }
-            });
-        }, observerOptions);
-
-        // Observe all animated elements
-        document.querySelectorAll('.fade-in, .slide-in-left, .slide-in-right').forEach(el => {
-            observer.observe(el);
-        });
-
-        // Staggered animation for app cards
-        const appCards = document.querySelectorAll('.app-card');
-        appCards.forEach((card, index) => {
-            setTimeout(() => {
-                const cardObserver = new IntersectionObserver((entries) => {
-                    entries.forEach(entry => {
-                        if (entry.isIntersecting) {
-                            setTimeout(() => {
-                                entry.target.classList.add('visible');
-                            }, index * 200); // Stagger by 200ms
-                        }
-                    });
-                }, observerOptions);
-                cardObserver.observe(card);
-            }, 100);
-        });
-
-        // Smooth scrolling for navigation links
+        // Smooth scroll for navigation links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
@@ -768,14 +794,45 @@
             });
         });
 
-        // Add scroll effect to navbar
-        window.addEventListener('scroll', () => {
-            const header = document.querySelector('header');
-            if (window.scrollY > 100) {
-                header.style.background = 'rgba(83, 104, 120, 0.15)';
+        // Navbar background change on scroll
+        window.addEventListener('scroll', function() {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 50) {
+                navbar.style.background = 'rgba(255, 255, 255, 0.98)';
+                navbar.style.boxShadow = '0 2px 20px rgba(0, 0, 0, 0.1)';
             } else {
-                header.style.background = 'rgba(83, 104, 120, 0.1)';
+                navbar.style.background = 'rgba(255, 255, 255, 0.95)';
+                navbar.style.boxShadow = 'none';
             }
+        });
+
+        // Form submission
+        document.querySelector('.contact-form form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Mesajınız için teşekkürler! En kısa sürede dönüş yapacağım.');
+        });
+
+        // Add animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Animate elements on scroll
+        document.querySelectorAll('.project-card, .skill-item').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = 'all 0.6s ease';
+            observer.observe(el);
         });
     </script>
 </body>
