@@ -1,70 +1,79 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <title>PythonSolid</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', sans-serif;
+            background-color: #0f172a;
+            color: white;
+        }
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 16px 32px;
+            background-color: rgba(15, 23, 42, 0.9);
+            backdrop-filter: blur(6px);
+            position: sticky;
+            top: 0;
+            z-index: 999;
+        }
+        .navbar .logo {
+            font-size: 20px;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+        .navbar .nav-links {
+            display: flex;
+            gap: 24px;
+        }
+        .nav-links a {
+            color: #e2e8f0;
+            text-decoration: none;
+            font-weight: 500;
+            position: relative;
+        }
+        .nav-links a::after {
+            content: "";
+            position: absolute;
+            width: 0%;
+            height: 2px;
+            bottom: -4px;
+            left: 0;
+            background-color: #38bdf8;
+            transition: width 0.3s;
+        }
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        @media (max-width: 600px) {
+            .nav-links {
+                display: none; /* Mobilde gizli tutalım, sonra açılır menü yapılır */
+            }
+        }
+    </style>
+</head>
 <body>
-  <div class="container">
-    <div class="glow-box">
-      <h1>Hoşgeldiniz</h1>
-      <p>PythonSolid projesine giriş sayfasındasınız. Yakında çok daha fazlası burada olacak.</p>
+    <div class="navbar">
+        <div class="logo">PythonSolid</div>
+        <div class="nav-links">
+            <a href="/">Anasayfa</a>
+            <a href="/portfoy">Portföy</a>
+            <a href="/uygulamalar">Uygulamalar</a>
+            <a href="/hakkimda">Hakkımda</a>
+            <a href="/iletisim">İletişim</a>
+        </div>
     </div>
-  </div>
 
-  <script>
-    document.addEventListener('mousemove', function(e) {
-      const trail = document.createElement('div');
-      trail.className = 'trail';
-      trail.style.left = e.pageX + 'px';
-      trail.style.top = e.pageY + 'px';
-      document.body.appendChild(trail);
-      setTimeout(() => trail.remove(), 500);
-    });
-  </script>
-
-  <style>
-    body {
-      margin: 0;
-      height: 100vh;
-      background: radial-gradient(circle at center, #0f2027, #203a43, #2c5364);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      overflow: hidden;
-    }
-
-    .container {
-      text-align: center;
-    }
-
-    .glow-box {
-      background-color: rgba(255, 255, 255, 0.05);
-      border-radius: 15px;
-      padding: 40px;
-      color: #fff;
-      font-family: 'Segoe UI', sans-serif;
-      animation: glow 2s ease-in-out infinite alternate;
-      box-shadow: 0 0 15px #00f0ff;
-    }
-
-    @keyframes glow {
-      from {
-        box-shadow: 0 0 10px #00f0ff, 0 0 20px #00f0ff;
-      }
-      to {
-        box-shadow: 0 0 20px #00f0ff, 0 0 40px #00f0ff;
-      }
-    }
-
-    .trail {
-      position: absolute;
-      width: 10px;
-      height: 10px;
-      background: rgba(0, 255, 255, 0.8);
-      border-radius: 50%;
-      pointer-events: none;
-      transform: translate(-50%, -50%);
-      animation: fadeTrail 0.5s ease-out;
-    }
-
-    @keyframes fadeTrail {
-      from { opacity: 1; transform: scale(1); }
-      to { opacity: 0; transform: scale(2); }
-    }
-  </style>
+    <!-- Buraya sayfanın devamı -->
+    <div style="padding: 100px 32px;">
+        <h1>Hoşgeldiniz</h1>
+        <p>PythonSolid'e giriş sayfasındasınız. Navbar test ediliyor.</p>
+    </div>
 </body>
+</html>
