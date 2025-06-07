@@ -83,47 +83,6 @@
             background: rgba(83, 104, 120, 0.3);
         }
 
-        /* Loading Screen */
-        .loading-screen {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, #536878 0%, #3d4f5c 100%);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 9999;
-            opacity: 1;
-            transition: opacity 0.5s ease;
-        }
-
-        .loading-screen.hidden {
-            opacity: 0;
-            pointer-events: none;
-        }
-
-        .loading-content {
-            text-align: center;
-            color: white;
-        }
-
-        .loading-spinner {
-            border: 3px solid rgba(255, 255, 255, 0.3);
-            border-top: 3px solid #ffd700;
-            border-radius: 50%;
-            width: 60px;
-            height: 60px;
-            animation: spin 1s linear infinite;
-            margin: 0 auto 20px;
-        }
-
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-
         /* Progress Bar */
         .progress-bar {
             position: fixed;
@@ -571,14 +530,6 @@
     </style>
 </head>
 <body>
-    <!-- Loading Screen -->
-    <div class="loading-screen" id="loadingScreen">
-        <div class="loading-content">
-            <div class="loading-spinner"></div>
-            <h2>PythonSolid Yükleniyor...</h2>
-        </div>
-    </div>
-
     <!-- Progress Bar -->
     <div class="progress-bar" id="progressBar"></div>
 
@@ -590,7 +541,6 @@
 
     <!-- Cursor Trail -->
     <div class="cursor-dot" id="cursorDot"></div>
-    <div class="cursor-outline" id="cursorOutline"></div>
     <header>
         <nav class="container">
             <a href="#" class="logo">PythonSolid</a>
@@ -607,7 +557,7 @@
         <!-- Hero Section -->
         <section id="anasayfa" class="hero">
             <div class="container">
-                <h1 class="typing-text" id="typingText"></h1>
+                <h1 class="typing-text" id="typingText"><span id="typingCursor" class="typing-cursor"></span></h1>
                 <p class="fade-in">Python ile güçlü ve etkili uygulamalar geliştiren bir geliştiricinin dünyasına hoş geldiniz.</p>
             </div>
         </section>
@@ -705,13 +655,6 @@
     </footer>
 
     <script>
-        // Loading Screen
-        window.addEventListener('load', () => {
-            setTimeout(() => {
-                document.getElementById('loadingScreen').classList.add('hidden');
-            }, 2000);
-        });
-
         // Progress Bar
         window.addEventListener('scroll', () => {
             const scrollTop = document.documentElement.scrollTop;
@@ -729,24 +672,31 @@
 
         // Typing Effect
         const typingText = document.getElementById('typingText');
+        const typingCursor = document.getElementById('typingCursor');
         const text = 'PythonSolid';
         let index = 0;
 
         function typeText() {
             if (index < text.length) {
-                typingText.textContent += text.charAt(index);
+                typingText.insertBefore(document.createTextNode(text.charAt(index)), typingCursor);
                 index++;
                 setTimeout(typeText, 200);
+            } else {
+                // Remove cursor after typing is complete
+                setTimeout(() => {
+                    typingCursor.style.display = 'none';
+                }, 1000);
             }
         }
 
-        setTimeout(typeText, 2500); // Start after loading screen
+        setTimeout(typeText, 500); // Start immediately
 
         // Particles
         function createParticle() {
             const particle = document.createElement('div');
             particle.className = 'particle';
-            particle.textContent = ['<', '>', '{', '}', '(', ')', ';', 'def', 'if', 'for', 'import'][Math.floor(Math.random() * 11)];
+            const particles = ['<', '>', '{', '}', '(', ')', ';', 'def', 'if', 'for', 'import', 'class', 'return', 'print'];
+            particle.textContent = particles[Math.floor(Math.random() * particles.length)];
             particle.style.left = Math.random() * 100 + '%';
             particle.style.animationDuration = (Math.random() * 3 + 3) + 's';
             particle.style.fontSize = (Math.random() * 10 + 10) + 'px';
@@ -760,18 +710,12 @@
 
         setInterval(createParticle, 500);
 
-        // Cursor Trail
+        // Cursor Trail (only dot)
         const cursorDot = document.getElementById('cursorDot');
-        const cursorOutline = document.getElementById('cursorOutline');
 
         document.addEventListener('mousemove', (e) => {
             cursorDot.style.left = e.clientX + 'px';
             cursorDot.style.top = e.clientY + 'px';
-            
-            setTimeout(() => {
-                cursorOutline.style.left = e.clientX + 'px';
-                cursorOutline.style.top = e.clientY + 'px';
-            }, 50);
         });
 
         // Scroll Triggered Animations
